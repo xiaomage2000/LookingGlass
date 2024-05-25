@@ -47,5 +47,17 @@ if (isset($_SESSION[LookingGlass::SESSION_TARGET_HOST]) &&
         case LookingGlass::METHOD_TRACEROUTE6:
             LookingGlass::traceroute6($_SESSION[LookingGlass::SESSION_TARGET_HOST]);
             break;
+        case LookingGlass::METHOD_BESTTRACE:
+            LookingGlass::besttrace($_SESSION[LookingGlass::SESSION_TARGET_HOST]);
+            break;
+        case LookingGlass::METHOD_BESTTRACE6:
+            LookingGlass::besttrace6($_SESSION[LookingGlass::SESSION_TARGET_HOST]);
+            break;
+        case LookingGlass::METHOD_NEXTTRACE:
+            LookingGlass::nexttrace($_SESSION[LookingGlass::SESSION_TARGET_HOST]);
+            break;
+        case LookingGlass::METHOD_NEXTTRACE6:
+            LookingGlass::nexttrace6($_SESSION[LookingGlass::SESSION_TARGET_HOST]);
+            break;
     }
 }

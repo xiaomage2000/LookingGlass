@@ -33,6 +33,10 @@ class LookingGlass
     public const METHOD_MTR6 = 'mtr6';
     public const METHOD_TRACEROUTE = 'traceroute';
     public const METHOD_TRACEROUTE6 = 'traceroute6';
+    public const METHOD_BESTTRACE = 'besttrace';
+    public const METHOD_BESTTRACE6 = 'besttrace6';
+    public const METHOD_NEXTTRACE = 'nexttrace';
+    public const METHOD_NEXTTRACE6 = 'nexttrace6';
 
     private const MTR_COUNT = 10;
 
@@ -288,6 +292,55 @@ class LookingGlass
     public static function traceroute6(string $host, int $failCount = 4): bool
     {
         return self::procExecute('traceroute -6 -w2', $host, $failCount);
+    }
+
+        /**
+     * Executes a besttrace command.
+     *
+     * @param  string  $host  The target host.
+     * @param  int  $failCount  Number of failed hops.
+     * @return bool True on success.
+     */
+    public static function besttrace(string $host, int $failCount = 4): bool
+    {
+        return self::procExecute('besttrace -g cn -q 1', $host);
+    }
+
+    /**
+     * Executes a besttrace6 command.
+     *
+     * @param  string  $host  The target host.
+     * @param  int  $failCount  Number of failed hops.
+     * @return bool True on success.
+     */
+    public static function besttrace6(string $host, int $failCount = 4): bool
+    {
+        return self::procExecute('besttrace -6 -g cn -q 1', $host);
+    }
+
+
+        /**
+     * Executes a nexttrace command.
+     *
+     * @param  string  $host  The target host.
+     * @param  int  $failCount  Number of failed hops.
+     * @return bool True on success.
+     */
+    public static function nexttrace(string $host, int $failCount = 4): bool
+    {
+        return self::procExecute('nexttrace -C -4', $host);
+    }
+
+    /**
+     * Executes a nexttrace6 command.
+     *
+     * @param  string  $host  The target host.
+     * @param  int  $failCount  Number of failed hops.
+     * @return bool True on success.
+     */
+    public static function nexttrace6(string $host, int $failCount = 4): bool
+    {
+        return self::procExecute('nexttrace -C -6', $host);
     }
 
     /**
